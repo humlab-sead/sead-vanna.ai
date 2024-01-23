@@ -1,0 +1,6 @@
+flask
+vanna[marqo,openai,postgres]
+db-dtypes
+python-dotenv
+openai
+marqo

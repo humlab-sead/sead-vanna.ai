@@ -1,0 +1,28 @@
+version: '3'
+services:
+  sead-vanna:
+    build: ./docker
+    environment:
+      - VANNA_MODEL=$VANNA_MODEL
+      - VANNA_API_KEY=$VANNA_API_KEY
+      - OPENAI_API_KEY=$OPENAI_API_KEY
+      - POSTGRES_HOST=$POSTGRES_HOST
+      - POSTGRES_DBNAME=$POSTGRES_DBNAME
+      - POSTGRES_USER=$POSTGRES_USER
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+      - POSTGRES_PORT=$POSTGRES_PORT
+    volumes:
+      - ./src/:/home/vanna/app
+    ports:
+      - 8084:8084
+    command:
+      ["./pyenv/bin/python", "./app/app.py"]
+    #command:
+    #  - "/bin/sh"
+    #  - "-c"
+    #  - "sleep 120 && /home/vanna/pyenv/bin/python ./app/train_openai_marqo.py"
+
+  #marqo:
+  #  image: marqoai/marqo:latest
+  #  ports:
+  #    - 8882:8882
